@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+
+<h1>Cities</h1>
+
+@foreach (var city in Model.Cities)
+{
+    <h2>@city.Name - @city.Country.CountryName</h2>
+
+    <div>
+        @if (city.Properties != null && city.Properties.Any())
+        {
+            <ul>
+                @foreach (var property in city.Properties)
+                {
+                    <li>
+                        Name: @property.Name - PricePerNight: R$@property.PricePerNight
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>No property registered.</p>
+        }
+        <a asp-page="/CityDetails" asp-route-name="@city.Name">
+            View details from @city.Name
+        </a>
+    </div>
+}

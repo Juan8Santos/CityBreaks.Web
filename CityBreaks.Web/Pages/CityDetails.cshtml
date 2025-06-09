@@ -1,0 +1,16 @@
+﻿@page
+@model CityBreaks.Web.Pages.CityDetailsModel
+@{
+	ViewData["Title"] = "City Details";
+}
+
+<h1>@Model.City.Name - @Model.City.Country.CountryName</h1>
+
+<ul>
+    @foreach (var prop in Model.City.Properties)
+    {
+       <li>
+            Name: @prop.Name - Price: R$@prop.PricePerNight
+       </li>
+    }
+</ul>
